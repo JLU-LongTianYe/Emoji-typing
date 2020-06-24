@@ -1,6 +1,6 @@
 package com.emotiv.epoc;
 
-import com.emotiv.epoc.EmoState.EE_ExpressivAlgo_t;//////////£¿
+import com.emotiv.epoc.EmoState.EE_ExpressivAlgo_t;//////////ï¼Ÿ
 import com.emotiv.ui.Gui;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.*;
@@ -26,7 +26,7 @@ import java.awt.*;
  */
 public class EmoStateLog extends JFrame implements ActionListener,Runnable
 {
-	static MyPanel mb=null;  GuankaPanel guankaPanel=null;  //×Ô½¨Á½¸öÃæ°åÓÃÓÚÇĞ»»
+	static MyPanel mb=null;  GuankaPanel guankaPanel=null;  //è‡ªå»ºä¸¤ä¸ªé¢æ¿ç”¨äºåˆ‡æ¢
 	JPanel mb1,mb2,mb3;
     JButton[] an={null,null};
     JLabel bq1,bq2;
@@ -104,9 +104,9 @@ public class EmoStateLog extends JFrame implements ActionListener,Runnable
         while (true) {
 //        	System.out.println(1);
             state = Edk.INSTANCE.EE_EngineGetNextEvent(eEvent);
-            // Êä³ö¸÷Í¨µÀµÄĞÅºÅÖµ
+            // è¾“å‡ºå„é€šé“çš„ä¿¡å·å€¼
 //            System.out.println(Edk.INSTANCE.EE_DataGet(eState, 0, buffer, 10));buffer
-//            Edk.INSTANCE.EE_DataGet(hData, channel, buffer, bufferSizeInSample);//////////////µÃµ½Í¨µÀµÄĞÅºÅ
+//            Edk.INSTANCE.EE_DataGet(hData, channel, buffer, bufferSizeInSample);//////////////å¾—åˆ°é€šé“çš„ä¿¡å·
             //New event needs to be handled
             if (state == EdkErrorCode.EDK_OK.ToInt()) {
                 int eventType = Edk.INSTANCE.EE_EmoEngineEventGetType(eEvent);
@@ -146,19 +146,7 @@ public class EmoStateLog extends JFrame implements ActionListener,Runnable
                        	}
                     }                                  	
              	 
-                  
-//                	    if(EmoState.INSTANCE.ES_ExpressivGetClenchExtent(eState)==1){
-//                            robot.mousePress(KeyEvent.BUTTON1_MASK);//Êó±êµ¥»÷
-//                            try {
-//								Thread.sleep(10);
-//							} catch (InterruptedException e) {
-//								// TODO Auto-generated catch block
-//								e.printStackTrace();
-//							}
-//                            robot.mouseRelease(KeyEvent.BUTTON1_MASK);
-//                            Thread.sleep(10);                   	                   	
-//                    	System.out.println("°´ÏÂ°´Å¥");                    	
-//                    }
+            
                    
                   
                    		if (EmoState.INSTANCE.ES_ExpressivGetEyebrowExtent(eState) == 1) {
@@ -173,19 +161,16 @@ public class EmoStateLog extends JFrame implements ActionListener,Runnable
                     		
                         
                     if (EmoState.INSTANCE.ES_ExpressivIsLookingLeft(eState) == 1) {
-//                        System.out.println("×ó...");
                     	if(location_a!=mousepoint.x){
                     		location_a-=400;
 	                        mmc.Move(-400, 0);
 	                        keyColornum-=1;
 	                        Thread.sleep(10);
-//	                        oneTouch=true;  
                     	}
                     	                      
                     }
 
                     if (EmoState.INSTANCE.ES_ExpressivIsLookingRight(eState) == 1) {
-//                        System.out.println("ÓÒ...");
                     	if(location_a!=(mousepoint.x+1200)){
                     		location_a+=400;
 	                        mmc.Move(400, 0);
@@ -194,7 +179,7 @@ public class EmoStateLog extends JFrame implements ActionListener,Runnable
                     	}                                
                     }
                         if(EmoState.INSTANCE.ES_ExpressivGetClenchExtent(eState)==1){
-                            robot.mousePress(KeyEvent.BUTTON1_MASK);//Êó±êµ¥»÷
+                            robot.mousePress(KeyEvent.BUTTON1_MASK);//é¼ æ ‡å•å‡»
                             try {
                                 Thread.sleep(10);
                             } catch (InterruptedException e) {
@@ -203,7 +188,7 @@ public class EmoStateLog extends JFrame implements ActionListener,Runnable
                             }
                             robot.mouseRelease(KeyEvent.BUTTON1_MASK);
                             Thread.sleep(10);
-                            System.out.println("°´ÏÂ°´Å¥");
+                            System.out.println("æŒ‰ä¸‹æŒ‰é’®");
                         }
              }
 
@@ -344,15 +329,15 @@ public class EmoStateLog extends JFrame implements ActionListener,Runnable
         mb2=new JPanel();
         mb3=new JPanel();
 
-        an[0]=new JButton("µÇÂ¼");
-        an[1]=new JButton("ÍË³ö");
+        an[0]=new JButton("ç™»å½•");
+        an[1]=new JButton("é€€å‡º");
         an[0].addActionListener(this);
         an[0].setActionCommand("start");
         an[1].addActionListener(this);
         an[1].setActionCommand("exit");
 
-        bq1=new JLabel("ÓÃ»§Ãû");
-        bq2=new JLabel("ÃÜ    Âë");
+        bq1=new JLabel("ç”¨æˆ·å");
+        bq2=new JLabel("å¯†    ç ");
         wbk=new JTextField(10);
         mmk=new JPasswordField(10);
         guankaPanel=new GuankaPanel(mb1,mb2,mb3,an,bq1,bq2,wbk,mmk);
@@ -427,7 +412,7 @@ class GuankaPanel extends JFrame {
         this.add(mb3);
         ImageIcon title = new ImageIcon("C:/IDEAproject/JUC/src/keyboard/timg.jpg");
         this.setIconImage(title.getImage());
-        this.setTitle("¼ªÁÖ´óÑ§³ÂÀÏÊ¦¿ÎÌâ×é");
+        this.setTitle("");
         this.setSize(500,200);
         this.setLocation(600,500);
         this.setResizable(false);
@@ -436,7 +421,7 @@ class GuankaPanel extends JFrame {
     }
 }
 class  MyPanel extends JFrame implements ActionListener {
-    JButton[] an={null,null,null,null,null,null,null,null,null};//ÉÁË¸°´¼ü
+    JButton[] an={null,null,null,null,null,null,null,null,null};//é—ªçƒæŒ‰é”®
     JButton[] anJ={null,null,null,null};
 //    JPanel panel=null;
     JPanel panel2=null;
@@ -449,7 +434,7 @@ class  MyPanel extends JFrame implements ActionListener {
 
     public MyPanel() throws AWTException {
         textArea=new JTextArea();
-        textArea.setFont(new Font("ºÚÌå",Font.BOLD,128));
+        textArea.setFont(new Font("é»‘ä½“",Font.BOLD,128));
         scrollPane= new JScrollPane(textArea);
 
         anJ[0]= new JButton("1");
@@ -465,10 +450,10 @@ class  MyPanel extends JFrame implements ActionListener {
         anJ[3].addActionListener(this);
         anJ[3].setActionCommand("4");
         for (int i = 0; i < 4; i++) {
-            anJ[i].setFont(new Font("ËÎÌå",Font.PLAIN,32));
+            anJ[i].setFont(new Font("å®‹ä½“",Font.PLAIN,32));
         }
 
-        an[0]=new JButton("£¬¡££¿");
+        an[0]=new JButton("ï¼Œã€‚ï¼Ÿ");
         an[1]=new JButton("ABCD");
         an[2]=new JButton("EFGH");
         an[3]=new JButton("IJKL");
@@ -497,7 +482,7 @@ class  MyPanel extends JFrame implements ActionListener {
 //        an[8].setActionCommand("W");
 
         for (int i = 0; i < s; i++) {
-            an[i].setFont(new Font("ËÎÌå",Font.PLAIN,30));
+            an[i].setFont(new Font("å®‹ä½“",Font.PLAIN,30));
             an[i].setSize(200,400);
         }
 
@@ -511,8 +496,8 @@ class  MyPanel extends JFrame implements ActionListener {
             panel2.add(an[i]);
         }
 //        panel.setLayout(new GridLayout(1,4,14,14));
-        panel2.setLayout(new GridLayout(3,4,14 ,14));//Íø¸ñ²¼¾Ö£¬3*3¸ö   14*14 °´Å¥Ö®¼äµÄ¿ÕÏ¶´óĞ¡
-//        this.setTitle("Íø¸ñ²¼¾Ö");
+        panel2.setLayout(new GridLayout(3,4,14 ,14));//ç½‘æ ¼å¸ƒå±€ï¼Œ3*3ä¸ª   14*14 æŒ‰é’®ä¹‹é—´çš„ç©ºéš™å¤§å°
+//        this.setTitle("ç½‘æ ¼å¸ƒå±€");
         this.setSize(2000, 1000);
         this.setLayout(new GridLayout(2,1));
         this.add(scrollPane);
@@ -537,7 +522,7 @@ class  MyPanel extends JFrame implements ActionListener {
                 textArea.setText(textArea.getText() + ",");
             }
             if (e.getActionCommand().equals("2")) {
-                textArea.setText(textArea.getText() + "¡£");
+                textArea.setText(textArea.getText() + "ã€‚");
             }
 
             if (e.getActionCommand().equals("3")) {
